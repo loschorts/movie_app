@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   		default: {format: :json}, 
   		only: [:index]
   end
+
+  root to: "pages#root", default: {format: :html}
 end
