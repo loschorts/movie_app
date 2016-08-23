@@ -8,8 +8,15 @@
 
 def fetch_remote_data(should_run = false)
 	return unless should_run
-	response = HTTParty.get('https://data.sfgov.org/api/views/yitu-d5am/rows.json')
-	puts response.body, response.code, response.message, response.headers.inspect
+
+	response = HTTParty.get(
+		'https://data.sfgov.org/resource/wwmu-gmzc.json?$select')
+	# Note: The `$select` query tag leaves out meta-data, returning the full subset of movie location listings
+	results = JSON.parse(response.body)
+
+	results.each do |result|
+
+	end
 end
 
 fetch_remote_data(true)
