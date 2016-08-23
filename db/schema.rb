@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823180830) do
+ActiveRecord::Schema.define(version: 20160823182351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,16 @@ ActiveRecord::Schema.define(version: 20160823180830) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.boolean  "mappable"
+    t.float    "lat"
+    t.float    "lng"
     t.index ["actor_1"], name: "index_movie_locations_on_actor_1", using: :btree
     t.index ["actor_2"], name: "index_movie_locations_on_actor_2", using: :btree
     t.index ["actor_3"], name: "index_movie_locations_on_actor_3", using: :btree
     t.index ["director"], name: "index_movie_locations_on_director", using: :btree
     t.index ["distributor"], name: "index_movie_locations_on_distributor", using: :btree
     t.index ["fun_facts"], name: "index_movie_locations_on_fun_facts", using: :btree
+    t.index ["lat"], name: "index_movie_locations_on_lat", using: :btree
+    t.index ["lng"], name: "index_movie_locations_on_lng", using: :btree
     t.index ["locations"], name: "index_movie_locations_on_locations", using: :btree
     t.index ["mappable"], name: "index_movie_locations_on_mappable", using: :btree
     t.index ["production_company"], name: "index_movie_locations_on_production_company", using: :btree

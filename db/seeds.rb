@@ -24,9 +24,12 @@ end
 
 def fetch_geocodes(should_run = false)
 	MovieLocation.all.each do |ml|
-		loc = ml.locations
-		p ml
-		p loc
+		if ml.locations.nil?
+			ml.mappable = false
+			ml.save!
+		end
+
+		ml.locations
 		# response = HTTParty.get('https://maps.googleapis.com/maps/api/geocode/json?&address=' + loc)	
 	end
 
