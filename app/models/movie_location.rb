@@ -1,3 +1,24 @@
 class MovieLocation < ApplicationRecord
-	
+
+	def self.filter_by_params(params)
+		result = self.all
+
+		params.each do |field, query|
+			next if [:lat, :lng, :mappable].include?(field.to_sym)
+			result = result.where("#{field} like ?", "%#{query}%")
+		end
+
+		return result if !params[:mappable]
+
+		if params[:mappable] == "true"
+			north, west = params[:north_west][:lat], params[north_west][:lng]
+			south, east = params[:south_east][:lat], params[south_east][:lng]
+			
+			result = result.where(mappable: true)
+			result = result.where(lat: south..north).where(lng: west..east)
+		elsif params[:mappable] == "false"
+			result = result.where(mappable: false)
+		end
+		result
+	end
 end
