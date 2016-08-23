@@ -6,34 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-def fetch_movie_locations(should_run = false)
-	return unless should_run
-	
-	MovieLocation.destroy_all
-	ActiveRecord::Base.connection.reset_pk_sequence!("movie_locations")
+require_relative './seeds_helper.rb'
 
-	response = HTTParty.get(
-		'https://data.sfgov.org/resource/wwmu-gmzc.json?$select')
-	# Note: The `$select` query tag leaves out meta-data, returning the full subset of movie location listings
-	results = JSON.parse(response.body)
-
-	results.each do |result|
-		MovieLocation.create(result);
-	end
-end
-
-def fetch_geocodes(should_run = false)
-	MovieLocation.all.each do |ml|
-		if ml.locations.nil?
-			ml.mappable = false
-			ml.save!
-		end
-
-		ml.locations
-		# response = HTTParty.get('https://maps.googleapis.com/maps/api/geocode/json?&address=' + loc)	
-	end
-
-end
-
+# hit the provider API for movie location data
 fetch_movie_locations(false)
-fetch_geocodes(true)
+
+# convert `locations` into coordinates
+fetch_geocodes(false)
