@@ -25,12 +25,14 @@ ActiveRecord::Schema.define(version: 20160823172058) do
     t.string   "release_year"
     t.string   "title"
     t.string   "writer"
+    t.string   "distributor"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["actor_1"], name: "index_movie_locations_on_actor_1", using: :btree
     t.index ["actor_2"], name: "index_movie_locations_on_actor_2", using: :btree
     t.index ["actor_3"], name: "index_movie_locations_on_actor_3", using: :btree
     t.index ["director"], name: "index_movie_locations_on_director", using: :btree
+    t.index ["distributor"], name: "index_movie_locations_on_distributor", using: :btree
     t.index ["locations"], name: "index_movie_locations_on_locations", using: :btree
     t.index ["production_company"], name: "index_movie_locations_on_production_company", using: :btree
     t.index ["release_year"], name: "index_movie_locations_on_release_year", using: :btree

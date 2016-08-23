@@ -15,7 +15,7 @@ def fetch_remote_data(should_run = false)
 	results = JSON.parse(response.body)
 
 	results.each do |result|
-
+		MovieLocation.create(result);
 	end
 end
 
