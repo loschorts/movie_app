@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-def sync_to_remote(should_run = false)
+def fetch_movie_locations(should_run = false)
 	return unless should_run
 	
 	MovieLocation.destroy_all
@@ -22,4 +22,15 @@ def sync_to_remote(should_run = false)
 	end
 end
 
-sync_to_remote(true)
+def fetch_geocodes(should_run = false)
+	MovieLocation.all.each do |ml|
+		loc = ml.locations
+		p ml
+		p loc
+		# response = HTTParty.get('https://maps.googleapis.com/maps/api/geocode/json?&address=' + loc)	
+	end
+
+end
+
+fetch_movie_locations(false)
+fetch_geocodes(true)
