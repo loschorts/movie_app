@@ -11,6 +11,7 @@ class CreateMovieLocations < ActiveRecord::Migration[5.0]
     	t.string :title
     	t.string :writer
     	t.string :distributor
+    	t.string :fun_facts
       t.timestamps
     end
 
@@ -24,5 +25,6 @@ class CreateMovieLocations < ActiveRecord::Migration[5.0]
 		add_index :movie_locations, :title
 		add_index :movie_locations, :writer 
 		add_index :movie_locations, :distributor
+		add_index :movie_locations, :fun_facts
   end
 end

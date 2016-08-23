@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-def fetch_remote_data(should_run = false)
+def sync_to_remote(should_run = false)
 	return unless should_run
+	
+	MovieLocation.destroy_all
+	ActiveRecord::Base.connection.reset_pk_sequence!("movie_locations")
 
 	response = HTTParty.get(
 		'https://data.sfgov.org/resource/wwmu-gmzc.json?$select')
@@ -19,4 +22,4 @@ def fetch_remote_data(should_run = false)
 	end
 end
 
-fetch_remote_data(true)
+sync_to_remote(true)
