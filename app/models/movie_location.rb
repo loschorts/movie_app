@@ -4,7 +4,7 @@ class MovieLocation < ApplicationRecord
 		result = self.all
 
 		params.each do |field, query|
-			next if [:mappable, :north, :south, :east, :west].include?(field.to_sym)
+			next if [:mappable, :north, :south, :east, :west, :fuzzy_search].include?(field.to_sym)
 			result = result.where("#{field} like ?", "%#{query}%")
 		end
 
@@ -19,4 +19,19 @@ class MovieLocation < ApplicationRecord
 		end
 		result
 	end
+
+	def self.fuzzy_search(query)
+		fields = [ 
+			:actor_1, :actor_2, :actor_3, :director, 
+			:locations, :production_company, :release_year,
+			:title, :writer, :distributor, :fun_facts
+		]
+
+		query_string = fields.map { |field| "#{field} like :query" }
+			.join(" OR ")
+
+		self.where(query_string, query: "%#{query}%")
+	end
+
+
 end
