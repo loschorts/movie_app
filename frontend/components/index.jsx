@@ -1,9 +1,10 @@
 import React from 'react';
 
-const IndexItem = ({location}) => {
+const IndexItem = ({ location }) => {
 
 	const details = Object.keys(location).map( key => {
-		if (!location[key]) return;
+		if (location[key] === null || 
+			typeof location[key] === 'undefined') return;
 		return (
 			<li key={`item-detail-${location.id}-${key}`}>
 				{key}: {location[key].toString()}
@@ -15,7 +16,6 @@ const IndexItem = ({location}) => {
 };
 
 const Index = ({ locations }) => {
-	console.log(locations);
 	return (
 		<div id="index">
 			{

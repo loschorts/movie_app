@@ -1,7 +1,7 @@
 class Api::MovieLocationsController < ApplicationController
 
 	def index
-		render json: MovieLocation.filter_by_params(query_params)
+		render json: MovieLocation.filter_by_params(query_params).first(20)
 	end
 
 	def query_params
