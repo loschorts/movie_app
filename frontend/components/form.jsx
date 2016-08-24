@@ -4,7 +4,6 @@ import merge from 'lodash/merge';
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
-		const { fetchLocations } = this.props;
 		this.state = {
 			actor_1: "",
 			actor_2: "",
@@ -17,12 +16,10 @@ class Form extends React.Component {
 			writer: "",
 			distributor: "",
 			fun_facts: "",
-			mappable: ""
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.update = this.update.bind(this);
-
 	}
 
 	handleSubmit(){
@@ -30,18 +27,17 @@ class Form extends React.Component {
 		Object.keys(this.state).forEach( field => {
 			if (query[field] === "") delete query[field];
 		});
-		console.log(query);
-		this.props.fetchLocations(query);
+		this.props.fetchLocations();
 	}
 
 	update(field){
-		return (e) => this.setState({[field]: e.currentTarget.value});
+		return (e) => this.setState({[field]: e.currentTarget.value},
+			this.props.setQueries(this.state));
 	}
 
 	render() {
-		console.log(this.state);
-
 		const fields = Object.keys(this.state).map( (field) => {
+			if (field === 'mappable') {return}
 			return (
 				<div className="form-input-field" 
 					key={`form-field-${field}`}>

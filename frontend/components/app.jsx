@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { locationsArray } from '../selectors';
 
-import { fetchLocations, setBounds } from '../actions/locations';
+import { fetchLocations, setBounds, setQueries } from '../actions/locations';
 
 import Index from './index';
 import Form from './form';
@@ -14,10 +14,11 @@ class App extends React.Component {
 		this.props.fetchLocations();
 	}
 	render(){
-		const { locationsArray, locations, detail, center, fetchLocations, setBounds } = this.props;
+		const { locationsArray, locations, detail, center, fetchLocations, setBounds, setQueries } = this.props;
 		return(
 			<div id="app">
-				<Form fetchLocations={fetchLocations}/>
+				<Form setQueries={setQueries} 
+					fetchLocations={fetchLocations}/>
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
 				<Map center={center} setBounds={setBounds}/>
@@ -35,7 +36,8 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-	fetchLocations: (params) => { dispatch(fetchLocations(params)) },
+	fetchLocations: () => { dispatch(fetchLocations()) },
+	setQueries: (queries) => {dispatch(setQueries(queries))},
 	setBounds: (bounds) => { dispatch(setBounds(bounds))}
 });
 
