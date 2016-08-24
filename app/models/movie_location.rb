@@ -20,17 +20,10 @@ class MovieLocation < ApplicationRecord
 		result
 	end
 
-	def self.fuzzy_search(query)
-		fields = [ 
-			:actor_1, :actor_2, :actor_3, :director, 
-			:locations, :production_company, :release_year,
-			:title, :writer, :distributor, :fun_facts
-		]
+	def self.suggest(field, query)
 
-		query_string = fields.map { |field| "#{field} like :query" }
-			.join(" OR ")
-
-		self.where(query_string, query: "%#{query}%")
+		self.where(" #{field} like ? ", "%#{query}%")
+			.select(field.to_sym).distinct
 	end
 
 

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   	resources :movie_locations,
   		defaults: {format: :json}, 
   		only: [:index]
+
+  	get "suggestions", to: "movie_locations#suggest"
   end
 
   root to: "pages#root", defaults: {format: :html}
