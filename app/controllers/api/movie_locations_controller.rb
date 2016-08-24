@@ -33,7 +33,7 @@ class Api::MovieLocationsController < ApplicationController
 		end
 
 		query = params[field]
-		render json: MovieLocation.suggest(field, query).limit(10)
+		render json: MovieLocation.suggest(field, query).limit(10).map(&field.to_sym)
 	end
 
 end

@@ -4,7 +4,7 @@ import normalize from '../utils/normalize';
 
 import getLocationFromId from '../selectors';
 
-const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS } = LocationConstants;
+const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS } = LocationConstants;
 
 import merge from 'lodash/merge';
 
@@ -48,10 +48,12 @@ const queries = (state = {mappable: true}, action) => {
 };
 
 const suggestions = (state = [], action) => {
-	// switch (action.type) {
-	// 	case PICK_SUGGESTION: 
-	// }
-	return state;
+	switch (action.type) {
+		case RECEIVE_SUGGESTIONS: 
+			return [...action.suggestions];
+		default: 
+			return state;
+	}
 };
 
 export default combineReducers({locations, detail, bounds, queries, suggestions});

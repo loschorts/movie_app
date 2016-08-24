@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestLocations, setBounds, setQueryField, setDetail } from '../actions/locations';
+import { requestLocations, setBounds, setQueryField, setDetail, requestSuggestions } from '../actions/locations';
 import { locationsArray } from '../selectors';
 import App from './app';
 

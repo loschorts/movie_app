@@ -1,18 +1,19 @@
 import { LocationConstants } from '../constants';
 const { REQUEST_LOCATIONS, SET_QUERY_FIELD, SET_BOUNDS, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTIONS } = LocationConstants;
 
-import { receiveLocations, requestLocations, requestSuggestions } from '../actions/locations';
-import { fetchLocations, handleError } from '../utils/locations_api_util';
+import { receiveLocations, requestLocations, requestSuggestions, receiveSuggestions } from '../actions/locations';
+import { fetchLocations, handleError, fetchSuggestions } from '../utils/locations_api_util';
 
 import merge from 'lodash/merge';
 
 const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 	switch(action.type){
 		case REQUEST_SUGGESTIONS: 
-			dispatch(requestSuggestions(action.field, action.value));
+			const success = res => {
+				dispatch(receiveSuggestions(res));
+			}
+			fetchSuggestions(action.field, action.value, success);
 			return next(action);
-		case RECEIVE_SUGGESTIONS: 
-			debugger
 		case PICK_SUGGESTIONS:
 		case SET_QUERY_FIELD:
 		case SET_BOUNDS: 
@@ -20,9 +21,7 @@ const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 			dispatch(requestLocations());
 			break;
 		case REQUEST_LOCATIONS: 
-			const locationsReceived = res => {
-				dispatch(receiveLocations(res));
-			};
+			const locationsReceived = res => dispatch(receiveLocations(res));
 
 			const state = getState();
 			let queries = merge({}, state.bounds, state.queries);

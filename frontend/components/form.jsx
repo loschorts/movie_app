@@ -28,13 +28,18 @@ class Form extends React.Component {
 	}
 
 	update(field){
-		return (e) => this.props.setQueryField(field, e.currentTarget.value);
+		return (e) => {
+			const { setQueryField, requestSuggestions } = this.props;
+			setQueryField(field, e.currentTarget.value);
+			requestSuggestions(field, e.currentTarget.value);
+
+		}
 	}
 
 	setActive(field){
+		const { requestSuggestions } = this.props;
 		return (e) => {
 			this.setState({activeField: field});
-			requestSuggestions(field, e.currentTarget.value);
 		}
 	}
 

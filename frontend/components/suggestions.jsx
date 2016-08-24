@@ -8,18 +8,20 @@ class Suggestions extends React.Component {
 	}
 	render(){		
 		const { suggestions } = this.props;
-		const suggList = suggestions.map( sug => {
+		console.log(this.props);
+		const suggList = suggestions.map( sug => (
 			<li>
 				<a href="#" onClick={this.handleClick}>{sug}</a>
 				</li>
-		});
+		));
 
+		console.log(suggList)
 		return(
 			<ul id="suggestions">
-				HELLO
 				{suggList}
 			</ul>
 		);	
 	}
 };
 
+export default Suggestions;
