@@ -14,7 +14,7 @@ class Map extends React.Component {
     this.map.addListener('idle', () => {
 			setBounds(this.map.getBounds().toJSON());
     });
-	
+	 
 	}
 	render(){
 		return (
