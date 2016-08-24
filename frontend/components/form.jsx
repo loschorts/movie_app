@@ -18,16 +18,7 @@ class Form extends React.Component {
 			fun_facts: "",
 		};
 
-		this.handleSubmit = this.handleSubmit.bind(this);
 		this.update = this.update.bind(this);
-	}
-
-	handleSubmit(){
-		let query = merge({}, this.state);
-		Object.keys(this.state).forEach( field => {
-			if (query[field] === "") delete query[field];
-		});
-		this.props.fetchLocations();
 	}
 
 	update(field){
@@ -56,7 +47,6 @@ class Form extends React.Component {
 		return (
 			<div id="form">
 				{fields}
-				<button onClick={this.handleSubmit}>Search</button>
 			</div>
 		);
 	}
