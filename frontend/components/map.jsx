@@ -2,7 +2,7 @@ import React from 'react';
 
 class Map extends React.Component {
 	componentDidMount(){
-		const { center } = this.props;
+		const { center, setBounds } = this.props;
 
 		const MapOptions = {
 		  center,
@@ -10,7 +10,6 @@ class Map extends React.Component {
 		};
 
   	this.map = new google.maps.Map(this._ref, MapOptions);	
-
 
     this.map.addListener('idle', () => {
 			setBounds(this.map.getBounds().toJSON());

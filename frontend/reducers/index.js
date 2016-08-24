@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { LocationConstants } from '../constants';
 import normalize from '../utils/normalize';
 
-const { RECEIVE_LOCATIONS, SET_DETAIL } = LocationConstants;
+const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS } = LocationConstants;
 
 import merge from 'lodash/merge';
 
@@ -31,4 +31,14 @@ const center = (state = aA, action) => {
 	return state;
 }
 
-export default combineReducers({locations, detail, center});
+const bounds = (state = {}, action) => {
+	switch (action.type) {
+		case SET_BOUNDS: 
+			return action.bounds;
+		default: 
+			return state;
+	}
+
+}
+
+export default combineReducers({locations, detail, center, bounds});
