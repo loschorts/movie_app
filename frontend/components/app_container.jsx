@@ -8,7 +8,8 @@ const mapState = state => ({
 	locationsArray: locationsArray(state),
 	locations: state.locations,
 	detail: state.detail,
-	bounds: state.bounds
+	bounds: state.bounds,
+	queries: state.queries
 });
 
 const mapDispatch = dispatch => ({

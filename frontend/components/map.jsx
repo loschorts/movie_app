@@ -79,16 +79,11 @@ class Map extends React.Component {
 
 	render(){
 		return (
-			<div>
 			<div 
 				ref={ c => {this._ref = c}} 
 				id="map"
 				style={{height: "500px", width: "500px"}}
 			/>
-			<button onClick={this.props.setDetail.bind(this, 5)}>
-				SET 5
-			</button>
-			</div>
 		)
 	}
 };

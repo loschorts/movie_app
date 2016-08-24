@@ -16,7 +16,6 @@ class Api::MovieLocationsController < ApplicationController
 	end
 
 	def suggest
-
 		query = params
 		query.delete("controller")
 		query.delete("action")

@@ -4,19 +4,19 @@ import merge from 'lodash/merge';
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			actor_1: "",
-			actor_2: "",
-			actor_3: "",
-			director: "",
-			locations: "",
-			production_company: "",
-			release_year: "",
-			title: "",
-			writer: "",
-			distributor: "",
-			fun_facts: "",
-		};
+		this.fields = [ 
+			'actor_1',
+			'actor_2',
+			'actor_3',
+			'director',
+			'locations',
+			'production_company',
+			'release_year',
+			'title',
+			'writer',
+			'distributor',
+			'fun_facts' 
+		];
 
 		this.update = this.update.bind(this);
 	}
@@ -26,7 +26,8 @@ class Form extends React.Component {
 	}
 
 	render() {
-		const fields = Object.keys(this.state).map( (field) => {
+		const { queries } = this.props;
+		const fields = this.fields.map( (field) => {
 			if (field === 'mappable') {return}
 			return (
 				<div className="form-input-field" 
@@ -36,7 +37,7 @@ class Form extends React.Component {
 
 						type="text" 
 						onChange={this.update(field)} 
-						value={this.state[field]}
+						value={queries[field]}
 					/>
 				</label>
 				</div>
