@@ -1,9 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { locationsArray } from '../selectors';
-
-import { requestLocations, setBounds, setQueryField, setDetail } from '../actions/locations';
-
 import Index from './index';
 import Form from './form';
 import Detail from './detail';
@@ -14,7 +9,7 @@ class App extends React.Component {
 		this.props.requestLocations();
 	}
 	render(){
-		const { locationsArray, locations, detail, center, requestLocations, setBounds, setQueryField } = this.props;
+		const { locationsArray, locations, detail, requestLocations, setBounds, setQueryField, setDetail } = this.props;
 		return(
 			<div id="app">
 				<Form setQueryField={setQueryField} 
@@ -22,9 +17,9 @@ class App extends React.Component {
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
 				<Map 
+					detail={detail}
 					locations={locations} 
 					locationsArray={locationsArray} 
-					center={center} 
 					setBounds={setBounds} 
 					setDetail={setDetail}/>
 			</div>
@@ -32,21 +27,4 @@ class App extends React.Component {
 	}
 };
 
-const mapState = state => ({
-	locationsArray: locationsArray(state),
-	locations: state.locations,
-	detail: state.detail,
-	center: state.center,
-	bounds: state.bounds
-});
-
-const mapDispatch = dispatch => ({
-	requestLocations: () => { dispatch(requestLocations()) },
-	setQueryField: (field, value) => {dispatch(setQueryField(field, value))},
-	setBounds: bounds => { dispatch(setBounds(bounds))},
-	setDetail: id => { dispatch(setDetail(id)) }
-
-});
-
-
-export default connect(mapState, mapDispatch)(App);
+export default App;

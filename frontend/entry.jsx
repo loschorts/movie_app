@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import AppContainer from './components/app_container';
 import configureStore from './configure_store';
 import { Provider } from 'react-redux';
 
@@ -8,7 +8,7 @@ const store = configureStore();
 
 const Root = () => (
 	<Provider store={store}>
-		<App/>
+		<AppContainer/>
 	</Provider>
 );
 

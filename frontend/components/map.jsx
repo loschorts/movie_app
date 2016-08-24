@@ -5,17 +5,23 @@ class Map extends React.Component {
 
 		this.setupMap = this.setupMap.bind(this);
 		this.updateMarkers = this.updateMarkers.bind(this);
+		this.recenter = this.recenter.bind(this);
 
   	this.markers = {};
   	this.setupMap();
   	this.updateMarkers();
 	}
 
+	componentDidUpdate() {
+		this.updateMarkers();
+		this.recenter();
+	}
+
 	setupMap(){
-		const { center, setBounds } = this.props;
+		const { setBounds } = this.props;
 
 		const MapOptions = {
-		  center,
+		  center: {lat: 37.791305, lng: -122.3937352},
 		  zoom: 15
 		};
 
@@ -26,7 +32,8 @@ class Map extends React.Component {
 	}
 
   updateMarkers(){
-		const { setBounds, locationsArray, locations } = this.props;
+		const { setBounds, locationsArray, locations, setDetail } = this.props;
+		const component = this;
 
   	const _createMarker = (loc) => {
 	    const pos = new google.maps.LatLng(loc.lat, loc.lng);
@@ -36,13 +43,13 @@ class Map extends React.Component {
 	      id: loc.id
 	    });
 	    marker.addListener('click', () => {
-	    	this.props.setDetail(marker.id);
+	    	component.props.setDetail(marker.id);
 	    });
 	    this.markers[marker.id] = marker;
 	  };
 
 	  // create new markers
-  	locationsArray.forEach(loc => {
+  	locationsArray.forEach( loc => {
   		if (loc.mappable && !this.markers[loc.id]) {
 				_createMarker(loc);
   		} 
@@ -54,21 +61,32 @@ class Map extends React.Component {
   			this.markers[id].setMap(null);
   			delete this.markers[id];
   		}
-  	})
+  	});
 
   }
 
-	componentDidUpdate() {
-		this.updateMarkers();
-	}
+  recenter(){
+  	const {detail, locations} = this.props;
+  	const loc = locations[detail];
+  	if (loc && loc.mappable) {
+  		const center = { lat: loc.lat, lng: loc.lng };
+  		this.map.setCenter(center);
+  	}
+  }
 
 	render(){
+		debugger
 		return (
+			<div>
 			<div 
 				ref={ c => {this._ref = c}} 
 				id="map"
 				style={{height: "500px", width: "500px"}}
 			/>
+			<button onClick={this.props.setDetail.bind(this, 5)}>
+				SET 5
+			</button>
+			</div>
 		)
 	}
 };

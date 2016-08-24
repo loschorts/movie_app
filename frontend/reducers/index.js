@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { LocationConstants } from '../constants';
 import normalize from '../utils/normalize';
 
+import getLocationFromId from '../selectors';
+
 const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD } = LocationConstants;
 
 import merge from 'lodash/merge';
@@ -25,11 +27,6 @@ const detail = (state = null, action) => {
 			return state;
 	}
 };
-const aA = Object.freeze({lat: 37.791305, lng: -122.3937352});
-
-const center = (state = aA, action) => {
-	return state;
-};
 
 const bounds = (state = {}, action) => {
 	switch (action.type) {
@@ -50,4 +47,4 @@ const queries = (state = {mappable: true}, action) => {
 	}
 };
 
-export default combineReducers({locations, detail, center, bounds, queries});
+export default combineReducers({locations, detail, bounds, queries});
