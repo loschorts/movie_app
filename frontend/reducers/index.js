@@ -7,7 +7,6 @@ const { RECEIVE_LOCATIONS } = LocationConstants;
 import merge from 'lodash/merge';
 
 const locations = (state = {}, action) => {
-	console.log(action);
 	switch (action.type) {
 
 	case RECEIVE_LOCATIONS:

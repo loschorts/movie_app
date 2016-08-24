@@ -1,8 +1,9 @@
 import { LocationConstants } from '../constants';
 const { FETCH_LOCATIONS, RECEIVE_LOCATIONS } = LocationConstants;
 
-export const fetchLocations = () => ({
-	type: FETCH_LOCATIONS
+export const fetchLocations = (queries = {}) => ({
+	type: FETCH_LOCATIONS,
+	queries
 });
 
 export const receiveLocations = (locations) => ({

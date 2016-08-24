@@ -5,15 +5,19 @@ import { locationsArray } from '../selectors';
 import { fetchLocations } from '../actions/locations';
 
 import Index from './index';
+import Form from './form';
 
 class App extends React.Component {
 	componentDidMount(){
 		this.props.fetchLocations();
 	}
 	render(){
-		const { locations } = this.props;
+		const { locations, fetchLocations } = this.props;
 		return(
-			<Index locations={locations}/>
+			<div id="app">
+				<Form fetchLocations={fetchLocations}/>
+				<Index locations={locations}/>
+			</div>
 		);
 	}
 };
@@ -23,7 +27,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-	fetchLocations: () => { dispatch(fetchLocations()) }
+	fetchLocations: (params) => { dispatch(fetchLocations(params)) }
 });
 
 
