@@ -1,8 +1,8 @@
 class Api::MovieLocationsController < ApplicationController
 
 	def index
-		if params[:fuzzy_search]
-			render json: MovieLocation.fuzzy_search(params[:fuzzy_search]).first(30)
+		if params[:query]
+			render json: MovieLocation.fuzzy_search(params[:query]).first(30)
 		else
 			render json: MovieLocation.filter_by_params(query_params).first(30)
 		end
