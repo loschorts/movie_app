@@ -5,16 +5,17 @@ class Map extends React.Component {
 
 		this.setupMap = this.setupMap.bind(this);
 		this.updateMarkers = this.updateMarkers.bind(this);
-		this.recenter = this.recenter.bind(this);
+		this.highlight = this.highlight.bind(this);
 
   	this.markers = {};
   	this.setupMap();
   	this.updateMarkers();
+  	this.highlight();
 	}
 
 	componentDidUpdate() {
 		this.updateMarkers();
-		this.recenter();
+		this.highlight();
 	}
 
 	setupMap(){
@@ -65,17 +66,18 @@ class Map extends React.Component {
 
   }
 
-  recenter(){
+  highlight(){
+  	Object.keys(this.markers).forEach( id => {
+  		this.markers[id].setIcon('http://maps.google.com/intl/en_us/mapfiles/ms/micons/red.png');
+  	});
   	const {detail, locations} = this.props;
   	const loc = locations[detail];
   	if (loc && loc.mappable) {
-  		const center = { lat: loc.lat, lng: loc.lng };
-  		this.map.setCenter(center);
+  		this.markers[detail].setIcon('http://maps.google.com/intl/en_us/mapfiles/ms/micons/green.png');
   	}
   }
 
 	render(){
-		debugger
 		return (
 			<div>
 			<div 
