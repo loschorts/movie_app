@@ -14,12 +14,13 @@ class App extends React.Component {
 		this.props.fetchLocations();
 	}
 	render(){
-		const { locationsArray, locations, detail, fetchLocations } = this.props;
+		const { locationsArray, locations, detail, center, fetchLocations } = this.props;
 		return(
 			<div id="app">
 				<Form fetchLocations={fetchLocations}/>
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
+				<Map center={center}/>
 			</div>
 		);
 	}
@@ -28,7 +29,8 @@ class App extends React.Component {
 const mapState = state => ({
 	locationsArray: locationsArray(state),
 	locations: state.locations,
-	detail: state.detail
+	detail: state.detail,
+	center: state.center
 });
 
 const mapDispatch = dispatch => ({

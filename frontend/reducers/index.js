@@ -25,5 +25,10 @@ const detail = (state = null, action) => {
 			return state;
 	}
 };
+const aA = Object.freeze({lat: 37.791305, lng: -122.3937352});
 
-export default combineReducers({locations, detail});
+const center = (state = aA, action) => {
+	return state;
+}
+
+export default combineReducers({locations, detail, center});
