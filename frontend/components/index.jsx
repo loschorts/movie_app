@@ -1,11 +1,15 @@
 import React from 'react';
 
 const IndexItem = ({location}) => {
-	const details = Object.keys(location).map( key => (
-		<li key={`item-detail-${id}-${key}`}>
-			{key}: {location[key].toString()}
-		</li>
-	));
+
+	const details = Object.keys(location).map( key => {
+		if (!location[key]) return;
+		return (
+			<li key={`item-detail-${location.id}-${key}`}>
+				{key}: {location[key].toString()}
+			</li>
+		);
+	});
 
 	return <ul className="index-item">{details}</ul>;
 };

@@ -1,5 +1,3 @@
-export const locationsArray = (state) => (
-	Object.keys(state.locations).map( (id, loc) => (
-		loc
-	))
+export const locationsArray = ({locations}) => (
+	Object.keys(locations).map( id => locations[id])
 );
