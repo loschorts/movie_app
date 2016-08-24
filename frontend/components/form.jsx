@@ -5,17 +5,17 @@ class Form extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			actor_1: null,
-			actor_2: null,
-			actor_3: null,
-			director: null,
-			locations: null,
-			production_company: null,
-			release_year: null,
-			title: null,
-			writer: null,
-			distributor: null,
-			fun_facts: null,
+			actor_1: "",
+			actor_2: "",
+			actor_3: "",
+			director: "",
+			locations: "",
+			production_company: "",
+			release_year: "",
+			title: "",
+			writer: "",
+			distributor: "",
+			fun_facts: "",
 		};
 
 		this.update = this.update.bind(this);
