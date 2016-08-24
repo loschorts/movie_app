@@ -1,5 +1,5 @@
 import { LocationConstants } from '../constants';
-const { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERIES} = LocationConstants;
+const { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD} = LocationConstants;
 
 export const requestLocations = () => ({
 	type: REQUEST_LOCATIONS
@@ -20,7 +20,8 @@ export const setBounds = (bounds) => ({
 	bounds
 });
 
-export const setQueries = (queries) => ({
-	type: SET_QUERIES,
-	queries
+export const setQueryField = (field, value) => ({
+	type: SET_QUERY_FIELD,
+	field,
+	value
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { locationsArray } from '../selectors';
 
-import { requestLocations, setBounds, setQueries } from '../actions/locations';
+import { requestLocations, setBounds, setQueryField } from '../actions/locations';
 
 import Index from './index';
 import Form from './form';
@@ -14,10 +14,10 @@ class App extends React.Component {
 		this.props.requestLocations();
 	}
 	render(){
-		const { locationsArray, locations, detail, center, requestLocations, setBounds, setQueries } = this.props;
+		const { locationsArray, locations, detail, center, requestLocations, setBounds, setQueryField } = this.props;
 		return(
 			<div id="app">
-				<Form setQueries={setQueries} 
+				<Form setQueryField={setQueryField} 
 					requestLocations={requestLocations}/>
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
@@ -37,7 +37,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
 	requestLocations: () => { dispatch(requestLocations()) },
-	setQueries: (queries) => {dispatch(setQueries(queries))},
+	setQueryField: (field, value) => {dispatch(setQueryField(field, value))},
 	setBounds: (bounds) => { dispatch(setBounds(bounds))}
 });
 

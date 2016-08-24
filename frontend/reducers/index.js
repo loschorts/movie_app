@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { LocationConstants } from '../constants';
 import normalize from '../utils/normalize';
 
-const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERIES } = LocationConstants;
+const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD } = LocationConstants;
 
 import merge from 'lodash/merge';
 
@@ -43,11 +43,11 @@ const bounds = (state = {}, action) => {
 
 const queries = (state = {mappable: true}, action) => {
 	switch (action.type) {
-		case SET_QUERIES:
-			return merge({}, action.queries);
+		case SET_QUERY_FIELD:
+			return merge({}, state, {[action.field]: action.value});
 		default:
 			return state;
 	}
-}
+};
 
 export default combineReducers({locations, detail, center, bounds, queries});

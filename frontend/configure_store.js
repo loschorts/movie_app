@@ -5,5 +5,5 @@ import createLogger from 'redux-logger'
 
 export default () => createStore(
 	reducer, 
-	applyMiddleware(LocationsMiddleware)
+	applyMiddleware(createLogger(), LocationsMiddleware)
 );
