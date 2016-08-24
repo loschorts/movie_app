@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
   	resources :movie_locations,
-  		default: {format: :json}, 
+  		defaults: {format: :json}, 
   		only: [:index]
   end
 
-  root to: "pages#root", default: {format: :html}
+  root to: "pages#root", defaults: {format: :html}
 end

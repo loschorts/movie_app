@@ -1,16 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { locationsArray } from '../selectors';
 
-const App = () => (
-	<h1>HELLO</h1>
-);
+import { fetchLocations } from '../actions/locations';
 
-const mapState = (state) => {
+import Index from './index';
 
+class App extends React.Component {
+	componentDidMount(){
+		this.props.fetchLocations();
+	}
+	render(){
+		const { locations } = this.props;
+		return(
+			<Index locations={locations}/>
+		);
+	}
 };
 
-const mapDispatch = (dispatch) => {
-	
-}
+const mapState = state => ({
+	locations: locationsArray(state)
+});
 
-export default App;
+const mapDispatch = dispatch => ({
+	fetchLocations: () => { dispatch(fetchLocations()) }
+});
+
+
+export default connect(mapState, mapDispatch)(App);

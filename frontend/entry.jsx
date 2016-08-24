@@ -16,3 +16,4 @@ document.addEventListener('DOMContentLoaded', ()=> {
 	const root = document.querySelector('#root');
 	ReactDOM.render(<Root/>, root);
 });
+

@@ -1,14 +1,20 @@
+import { combineReducers } from 'redux';
 import { LocationConstants } from '../constants';
+import normalize from '../utils/normalize';
+
 const { RECEIVE_LOCATIONS } = LocationConstants;
 
 import merge from 'lodash/merge';
 
-const reducer = (state = {}, action) => {
+const locations = (state = {}, action) => {
+	console.log(action);
 	switch (action.type) {
-		case RECEIVE_LOCATIONS:
-		break;
+
+	case RECEIVE_LOCATIONS:
+		return normalize(action.locations);
+	default:
+		return state;
 	}
-	return state;
 };
 
-export default reducer;
+export default combineReducers({locations});

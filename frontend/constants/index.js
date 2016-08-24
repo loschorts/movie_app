@@ -1,3 +1,4 @@
 export const LocationConstants = {
+	FETCH_LOCATIONS: "FETCH_LOCATIONS",
 	RECEIVE_LOCATIONS: "RECEIVE_LOCATIONS"
 };
