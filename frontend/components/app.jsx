@@ -21,7 +21,12 @@ class App extends React.Component {
 					requestLocations={requestLocations}/>
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
-				<Map locations={locationsArray} center={center} setBounds={setBounds} setDetail={setDetail}/>
+				<Map 
+					locations={locations} 
+					locationsArray={locationsArray} 
+					center={center} 
+					setBounds={setBounds} 
+					setDetail={setDetail}/>
 			</div>
 		);
 	}

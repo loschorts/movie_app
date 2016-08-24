@@ -23,7 +23,6 @@ const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 			Object.keys(queries).forEach( k => {
 				if (queries[k] === '' || !queries[k]) delete queries[k];
 			});
-			console.log(queries);
 			fetchLocations(queries, locationsReceived, handleError);
 			return next(action);
 		default:
