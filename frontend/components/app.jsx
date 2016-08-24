@@ -7,6 +7,7 @@ import { fetchLocations } from '../actions/locations';
 import Index from './index';
 import Form from './form';
 import Detail from './detail';
+import Map from './map';
 
 class App extends React.Component {
 	componentDidMount(){
