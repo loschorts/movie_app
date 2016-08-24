@@ -9,10 +9,12 @@ const mapState = state => ({
 	locations: state.locations,
 	detail: state.detail,
 	bounds: state.bounds,
-	queries: state.queries
+	queries: state.queries,
+	suggestions: state.suggestions
 });
 
 const mapDispatch = dispatch => ({
+	requestSuggestions: (field, value) => {dispatch(requestSuggestions(field, value))},
 	requestLocations: () => { dispatch(requestLocations()) },
 	setQueryField: (field, value) => {dispatch(setQueryField(field, value))},
 	setBounds: bounds => { dispatch(setBounds(bounds))},
