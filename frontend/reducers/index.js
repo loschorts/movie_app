@@ -17,6 +17,8 @@ const locations = (state = {}, action) => {
 
 const detail = (state = null, action) => {
 	switch (action.type) {
+		case RECEIVE_LOCATIONS: 
+			return null;
 		case SET_DETAIL: 
 			return action.id;
 		default:
