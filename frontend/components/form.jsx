@@ -54,7 +54,7 @@ class Form extends React.Component {
 			return (
 				<div className="form-field" 
 					key={`form-field-${field}`}>
-					<label>{field}: 
+					<label>{field}<br/>
 						<input 
 							type="text"
 							onFocus={this.setActive(field)} 

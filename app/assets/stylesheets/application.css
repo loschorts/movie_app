@@ -14,39 +14,11 @@
  *= require_self
  */
 
-#detail {
-
-}
-
-.detail-item {
-
-}
-
-#form {
-
-}
-
-.form-field {
-
-}
-
-#index {
-
-}
-
-.index-item {
-
+#app {
+	display: flex;
 }
 
 #map {
 	height: 500px;
 	width: 500px;
-}
-
-#suggestions {
-
-}
-
-.suggestion-item {
-	
 }
