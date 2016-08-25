@@ -55,7 +55,7 @@ the future, for example as part of the Index but not the Map.
 **Seed Files**
 - `db/seeds.rb` and `db/seeds_helper.rb`
 
-**API***
+**API**
 - `app/controllers/api/movie_locations_controller.rb`
 - `app/models/movie_location.rb`
 
