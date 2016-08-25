@@ -25,6 +25,7 @@ class Form extends React.Component {
 		};
 
 		this.update = this.update.bind(this);
+		this.startClear = this.startClear.bind(this);
 	}
 
 	update(field){
@@ -37,10 +38,13 @@ class Form extends React.Component {
 	}
 
 	setActive(field){
-		const { requestSuggestions } = this.props;
 		return (e) => {
 			this.setState({activeField: field});
 		}
+	}
+
+	startClear(){
+		setTimeOut(this.props.clearSuggestions, 0);
 	}
 
 	render() {
@@ -55,7 +59,7 @@ class Form extends React.Component {
 							type="text"
 							onFocus={this.setActive(field)} 
 							onChange={this.update(field)} 
-							onBlur={clearSuggestions}
+							onBlur={this.startClear}
 							value={queries[field]}
 						/>
 					</label>
