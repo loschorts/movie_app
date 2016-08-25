@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+#detail {
+
+}
+
+.detail-item {
+
+}
+
+#form {
+
+}
+
+.form-field {
+
+}
+
+#index {
+
+}
+
+.index-item {
+
+}
+
+#map {
+	height: 500px;
+	width: 500px;
+}
+
+#suggestions {
+
+}
+
+.suggestion-item {
+	
+}

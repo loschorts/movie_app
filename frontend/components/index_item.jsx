@@ -14,9 +14,8 @@ class IndexItem extends React.Component {
 	render() {
 		const { location } = this.props;
 		return (
-			<li><a 
+			<li className="index-item" ><a 
 				href="#" 
-				className="index-item" 
 				onClick={this.handleClick}>
 				{location.title}: {location.locations}
 			</a></li>

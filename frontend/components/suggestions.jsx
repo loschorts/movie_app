@@ -13,7 +13,7 @@ class Suggestions extends React.Component {
 	render(){		
 		const { suggestions } = this.props;
 		const suggList = suggestions.map( (sug , i) => (
-			<li key={`sug-${i}`} >
+			<li className="suggestion-item" key={`sug-${i}`} >
 				<a href="#" onClick={this.handleClick}>{sug}</a>
 				</li>
 		));

@@ -9,13 +9,15 @@ const Detail = ({ detail, locations }) => {
 		if (location[key] === null || 
 			typeof location[key] === 'undefined') return;
 		return (
-			<li key={`item-detail-${location.id}-${key}`}>
+			<li 
+				className="detail-item"
+				key={`item-detail-${location.id}-${key}`}>
 				{key}: {location[key].toString()}
 			</li>
 		);
 	});
 
-	return <ul className="detail">{details}</ul>;
+	return <ul id="detail-list">{details}</ul>;
 };
 
 export default Detail;

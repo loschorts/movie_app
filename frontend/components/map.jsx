@@ -82,7 +82,6 @@ class Map extends React.Component {
 			<div 
 				ref={ c => {this._ref = c}} 
 				id="map"
-				style={{height: "500px", width: "500px"}}
 			/>
 		)
 	}

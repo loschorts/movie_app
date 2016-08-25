@@ -52,7 +52,7 @@ class Form extends React.Component {
 		const fields = this.fields.map( (field) => {
 			if (field === 'mappable') {return}
 			return (
-				<div className="form-input-field" 
+				<div className="form-field" 
 					key={`form-field-${field}`}>
 					<label>{field}: 
 						<input 
