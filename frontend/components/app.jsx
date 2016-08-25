@@ -10,14 +10,15 @@ class App extends React.Component {
 		this.props.requestLocations();
 	}
 	render(){
-		const { queries, locationsArray, locations, detail, requestLocations, setBounds, setQueryField, setDetail, requestSuggestions } = this.props;
+		const { queries, locationsArray, locations, detail, requestLocations, setBounds, setQueryField, setDetail, requestSuggestions, clearSuggestions } = this.props;
 		return(
 			<div id="app">
 				<Form 
 					queries={queries}
 					setQueryField={setQueryField} 
 					requestLocations={requestLocations}
-					requestSuggestions={requestSuggestions}/>
+					requestSuggestions={requestSuggestions}
+					clearSuggestions={clearSuggestions}/>
 				<Index locations={locationsArray}/>
 				<Detail detail={detail} locations={locations}/>
 				<Map 

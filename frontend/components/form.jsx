@@ -44,7 +44,7 @@ class Form extends React.Component {
 	}
 
 	render() {
-		const { queries } = this.props;
+		const { queries, clearSuggestions } = this.props;
 		const fields = this.fields.map( (field) => {
 			if (field === 'mappable') {return}
 			return (
@@ -55,6 +55,7 @@ class Form extends React.Component {
 							type="text"
 							onFocus={this.setActive(field)} 
 							onChange={this.update(field)} 
+							onBlur={clearSuggestions}
 							value={queries[field]}
 						/>
 					</label>

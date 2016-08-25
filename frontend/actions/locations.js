@@ -1,5 +1,5 @@
 import { LocationConstants } from '../constants';
-const { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTION } = LocationConstants;
+const { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTION, CLEAR_SUGGESTIONS } = LocationConstants;
 
 export const requestLocations = () => ({
 	type: REQUEST_LOCATIONS
@@ -41,4 +41,8 @@ export const requestSuggestions = (field, value) => ({
 export const receiveSuggestions = (suggestions) => ({
 	type: RECEIVE_SUGGESTIONS,
 	suggestions
+});
+
+export const clearSuggestions = () => ({
+	type: CLEAR_SUGGESTIONS
 });

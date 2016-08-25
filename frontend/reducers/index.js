@@ -4,7 +4,7 @@ import normalize from '../utils/normalize';
 
 import getLocationFromId from '../selectors';
 
-const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTION } = LocationConstants;
+const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTION, CLEAR_SUGGESTIONS } = LocationConstants;
 
 import merge from 'lodash/merge';
 
@@ -56,6 +56,8 @@ const suggestions = (state = [], action) => {
 			return state;
 		case RECEIVE_SUGGESTIONS: 
 			return [...action.suggestions];
+		case CLEAR_SUGGESTIONS: 
+			return [];
 		default: 
 			return state;
 	}

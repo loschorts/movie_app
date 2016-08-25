@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestLocations, setBounds, setQueryField, setDetail, requestSuggestions } from '../actions/locations';
+import { requestLocations, setBounds, setQueryField, setDetail, requestSuggestions, clearSuggestions } from '../actions/locations';
 import { locationsArray } from '../selectors';
 import App from './app';
 
@@ -18,7 +18,8 @@ const mapDispatch = dispatch => ({
 	requestLocations: () => { dispatch(requestLocations()) },
 	setQueryField: (field, value) => {dispatch(setQueryField(field, value))},
 	setBounds: bounds => { dispatch(setBounds(bounds))},
-	setDetail: id => { dispatch(setDetail(id)) }
+	setDetail: id => { dispatch(setDetail(id)) },
+	clearSuggestions: () => { dispatch(clearSuggestions()) }
 });
 
 export default connect(mapState, mapDispatch)(App);
