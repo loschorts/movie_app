@@ -52,10 +52,23 @@ the future, for example as part of the Index but not the Map.
 
 ## Notable Files To Peruse
 
+**Seed Files**
 - `db/seeds.rb` and `db/seeds_helper.rb`
+
+**API***
 - `app/controllers/api/movie_locations_controller.rb`
 - `app/models/movie_location.rb`
-- ``
+
+**Frontend Components**
+- `frontend/components/app.jsx`
+- `frontend/components/app_container.jsx`
+- `frontend/components/form.jsx`
+- `frontend/components/map.jsx`
+- `frontend/components/suggestions.jsx`
+
+**Frontend DataFlow**
+- `frontend/middlewares/locations.js`
+- `frontend/reducers/index.js`
 
 # Pre-Install Dependencies 
 
