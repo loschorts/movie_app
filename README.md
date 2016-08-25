@@ -14,7 +14,6 @@
 
 ### Gems
 
--	`rails`
 - `bundler`
 
 ## Features
