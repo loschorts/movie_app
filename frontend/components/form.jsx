@@ -44,7 +44,7 @@ class Form extends React.Component {
 	}
 
 	startClear(){
-		setTimeOut(this.props.clearSuggestions, 0);
+		setTimeout(this.props.clearSuggestions, 500);
 	}
 
 	render() {
