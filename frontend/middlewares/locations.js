@@ -9,6 +9,7 @@ import merge from 'lodash/merge';
 const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 	switch(action.type){
 		case REQUEST_SUGGESTIONS: 
+			if (!action.value) return next(action);
 			const success = res => {
 				dispatch(receiveSuggestions(res));
 			}

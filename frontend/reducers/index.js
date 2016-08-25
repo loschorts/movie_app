@@ -51,6 +51,9 @@ const queries = (state = {mappable: true}, action) => {
 
 const suggestions = (state = [], action) => {
 	switch (action.type) {
+		case REQUEST_SUGGESTIONS:
+			if (!action.value) return [];
+			return state;
 		case RECEIVE_SUGGESTIONS: 
 			return [...action.suggestions];
 		default: 

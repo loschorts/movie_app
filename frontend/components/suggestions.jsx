@@ -12,14 +12,11 @@ class Suggestions extends React.Component {
 	}
 	render(){		
 		const { suggestions } = this.props;
-		console.log(this.props);
-		const suggList = suggestions.map( sug => (
-			<li>
+		const suggList = suggestions.map( (sug , i) => (
+			<li key={`sug-${i}`} >
 				<a href="#" onClick={this.handleClick}>{sug}</a>
 				</li>
 		));
-
-		console.log(suggList)
 		return(
 			<ul id="suggestions">
 				{suggList}

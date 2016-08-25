@@ -29,11 +29,11 @@ class Form extends React.Component {
 
 	update(field){
 		return (e) => {
+			let value = e.currentTarget.value;
 			const { setQueryField, requestSuggestions } = this.props;
-			setQueryField(field, e.currentTarget.value);
-			requestSuggestions(field, e.currentTarget.value);
-
-		}
+			setQueryField(field, value);
+			requestSuggestions(field, value);
+		};
 	}
 
 	setActive(field){
@@ -44,7 +44,6 @@ class Form extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.activeField);
 		const { queries } = this.props;
 		const fields = this.fields.map( (field) => {
 			if (field === 'mappable') {return}
