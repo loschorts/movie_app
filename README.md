@@ -1,23 +1,34 @@
 # Movie Filter Application
 
-# Installation
+# Pre-Install Dependencies 
 
-`./install.sh`
-
-## Dependencies 
-
--	`node`
-- `webpack`
 - `ruby`
 - `gem`
-- `postgresql`
-
-### Gems
-
 - `bundler`
+- `rails`
+- `postgresql`
+-	`node`
+- `webpack`
+
+# Installation
+
+- `./install.sh`
+- `http://localhost:3000`
 
 ## Features
 
- a) your motivation for the libraries and tools that you chose,
+-	Filter Form with Suggestion / Auto-Complete
+- Index of Visible Locations
+- Detail View for Single Location
+	- Detail shown on Index Item or Marker Click
+- Interactive Map
+	- Map-Bounded API Requests on Drag
+	- Highlighted Marker of Detail Location
 
 ## Design Choices
+
+### Rails Backend
+
+	
+- Redux
+- 

@@ -6,23 +6,24 @@ def fetch_movie_locations(should_run = false)
 
 	response = HTTParty.get(
 		'https://data.sfgov.org/resource/wwmu-gmzc.json?$select')
-	# Note: The `$select` query tag leaves out meta-data, returning the full subset of movie location listings
+	# Note: The `$select` query tag leaves out meta-data, returning the full subset
+	# of movie location listings
 	results = JSON.parse(response.body)
 
 	results.each do |result|
-		p MovieLocation.create!(result);
+		p MovieLocation.create(result);
 	end
 end
 
 def fetch_geocodes(should_run = false)
 	return unless should_run
 
-	# pass each location to a geo-coder API and record the coordinates returned, if any, along with a `mappable` status
+
 	MovieLocation.all.each do |ml|
 		if ml.locations.nil?
 			puts ml.id.to_s + " unmappable"
 			ml.mappable = false
-			ml.save!
+			ml.save
 			next
 		end
 
@@ -32,7 +33,7 @@ def fetch_geocodes(should_run = false)
 		if res["results"].empty?
 			puts ml.id.to_s + " unmappable"
 			ml.mappable = false
-			ml.save!
+			ml.save
 			next
 		end
 			
@@ -41,7 +42,7 @@ def fetch_geocodes(should_run = false)
 		lng = coords["lng"]
 
 		ml.lat, ml.lng, ml.mappable = lat, lng, true
-		ml.save!
+		ml.save
 		puts ml.id.to_s + " mapped"
 		p [ml.lat, ml.lng]
 		
