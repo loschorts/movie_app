@@ -1,5 +1,7 @@
 class Api::MovieLocationsController < ApplicationController
 
+	# These are the permitted filter fields. They are used in multiple places and
+	# therefore set as a global variable of this controller.
 	FIELDS = [
 		:north, :south, :east, :west, :mappable, 
 		:actor_1, :actor_2, :actor_3, :director, 
@@ -8,6 +10,9 @@ class Api::MovieLocationsController < ApplicationController
 	]
 
 	def index
+		# the 'main' API hook for fetching locations. Accepts filters params. Limits
+		# are employed to 1) save bandwidth and 2) minimize UI clutter on the front-
+		# end.
 		render json: MovieLocation.filter_by_params(query_params).limit(30)
 	end
 
@@ -16,6 +21,9 @@ class Api::MovieLocationsController < ApplicationController
 	end
 
 	def suggest
+		# the API hook for fetching auto-complete suggestions. Fetches search
+		# suggestions for a single filter field.
+
 		query = params
 		query.delete("controller")
 		query.delete("action")
@@ -32,8 +40,10 @@ class Api::MovieLocationsController < ApplicationController
 			return
 		end
 
-		query = params[field]
-		render json: MovieLocation.suggest(field, query).limit(10).map(&field.to_sym)
+		value = params[field]
+
+		# Converts the query result into an array of strings for front-end use
+		render json: MovieLocation.suggest(field, value).limit(10).map(&field.to_sym)
 	end
 
 end

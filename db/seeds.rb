@@ -9,7 +9,7 @@
 require_relative './seeds_helper.rb'
 
 
-# Requests all data from the Provided API and stores the result in MovieLocation 
+# Requests all data from the SODA API and stores the result in MovieLocation 
 # instances (set `false` to disable)
 fetch_movie_locations(true)
 

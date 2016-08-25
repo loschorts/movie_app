@@ -18,7 +18,7 @@ end
 def fetch_geocodes(should_run = false)
 	return unless should_run
 
-
+	# Sets each MovieLocation's `mappable` property after sending its `locations` to a Google Maps Geocoding API. Coordinates are saved if the location is mappable.
 	MovieLocation.all.each do |ml|
 		if ml.locations.nil?
 			puts ml.id.to_s + " unmappable"
