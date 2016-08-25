@@ -1,10 +1,10 @@
 # Movie Filter Application
 
-[Download zip.](https://github.com/loschorts/movie_app/archive/master.zip)
-
 This is a Rails/React/Redux application that shows Movie Locations. Users can
-find find movie locations via filter fields with suggestions/auto- complete,
+browse movie locations via filter fields with suggestions/auto-complete,
 perusing an index, or dragging and clicking on a Google Map.
+
+[zip](https://github.com/loschorts/movie_app/archive/master.zip)
 
 # Pre-Install Dependencies 
 
@@ -18,6 +18,7 @@ perusing an index, or dragging and clicking on a Google Map.
 
 # Installation
 
+- `git clone git@github.com:loschorts/movie_app.git && cd movie_app`
 - `./install.sh`
 - `http://localhost:3000`
 
