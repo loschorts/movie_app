@@ -4,34 +4,6 @@ This is a Rails/React/Redux application that shows Movie Locations. Users can
 browse movie locations via filter fields with suggestions/auto-complete,
 perusing an index, or dragging and clicking on a Google Map.
 
-[zip](https://github.com/loschorts/movie_app/archive/master.zip)
-
-# Pre-Install Dependencies 
-
-- `ruby`
-- `gem`
-- `bundler`
-- `rails`
-- `postgresql`
--	`node`
-- `webpack`
-
-# Installation
-
-- `git clone git@github.com:loschorts/movie_app.git && cd movie_app`
-- `./install.sh`
-- `http://localhost:3000`
-
-# Features
-
--	Filter Form with Suggestion / Auto-Complete
-- Index of Visible Locations
-- Detail View for Single Location
-	- Detail shown on Index Item or Marker Click
-- Interactive Map
-	- Map-Bounded API Requests on Drag
-	- Highlighted Marker of Detail Location
-
 # Design Choices
 
 ## Rails Backend
@@ -84,3 +56,34 @@ the future, for example as part of the Index but not the Map.
 - `app/controllers/api/movie_locations_controller.rb`
 - `app/models/movie_location.rb`
 - ``
+
+# Pre-Install Dependencies 
+
+- `ruby`
+- `gem`
+- `bundler`
+- `rails`
+- `postgresql`
+-	`node`
+- `webpack`
+
+# Installation
+
+- `git clone git@github.com:loschorts/movie_app.git && cd movie_app`
+- `./install.sh`
+- `http://localhost:3000`
+
+# Features
+
+-	Filter Form with Suggestion / Auto-Complete
+- Index of Visible Locations
+- Detail View for Single Location
+	- Detail shown on Index Item or Marker Click
+- Interactive Map
+	- Map-Bounded API Requests on Drag
+	- Highlighted Marker of Detail Location
+
+# Zip File
+
+[zip](https://github.com/loschorts/movie_app/archive/master.zip)
+
