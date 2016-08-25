@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { LocationConstants } from '../constants';
 import normalize from '../utils/normalize';
-
 import getLocationFromId from '../selectors';
+import merge from 'lodash/merge';
 
 const { RECEIVE_LOCATIONS, SET_DETAIL, SET_BOUNDS, SET_QUERY_FIELD, REQUEST_SUGGESTIONS, RECEIVE_SUGGESTIONS, PICK_SUGGESTION, CLEAR_SUGGESTIONS } = LocationConstants;
 
-import merge from 'lodash/merge';
+// The reducer is responsible for updating the application state based on dispatches made by the components and middleware.
 
 const locations = (state = {}, action) => {
 	switch (action.type) {

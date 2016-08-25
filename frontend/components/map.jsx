@@ -1,5 +1,10 @@
 import React from 'react';
 
+// The `Map` updates the application state each time it moves by updating the
+// bounds (via `SET_BOUNDS`) that will be used to filter movie location results
+// from the API. It is also responsible for managing the markers representing
+// individual movie locations, and highlighting the selected marker, if any.
+
 class Map extends React.Component {
 	componentDidMount(){
 
@@ -8,12 +13,14 @@ class Map extends React.Component {
 		this.highlight = this.highlight.bind(this);
 
   	this.markers = {};
-  	this.setupMap();
-  	this.updateMarkers();
-  	this.highlight();
+
+  	this.setupMap(); // Initializes the map
+  	this.updateMarkers(); // See below
+  	this.highlight(); // Highlights the active marker, if any
 	}
 
 	componentDidUpdate() {
+		// Resets the markers each time the application state changes
 		this.updateMarkers();
 		this.highlight();
 	}
@@ -33,6 +40,7 @@ class Map extends React.Component {
 	}
 
   updateMarkers(){
+  	// Creates new markers for new locations, and removes markers for expired locations, each time the state changes
 		const { setBounds, locationsArray, locations, setDetail } = this.props;
 		const component = this;
 

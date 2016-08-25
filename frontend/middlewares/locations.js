@@ -6,6 +6,8 @@ import { fetchLocations, handleError, fetchSuggestions } from '../utils/location
 
 import merge from 'lodash/merge';
 
+// This middleware handles application dispatches which require API interaction. The middleware requests Movie Locations from the API whenever filter fields are changed (including when auto-complete suggestions are picked) or the map is moved. It is also responsible for triggering API requests whenever a filter field is changed to obtain new search suggestions.
+
 const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 	switch(action.type){
 		case REQUEST_SUGGESTIONS: 
@@ -13,6 +15,7 @@ const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 			const success = res => {
 				dispatch(receiveSuggestions(res));
 			}
+			// fetches suggestions whenever a filter field is updated
 			fetchSuggestions(action.field, action.value, success);
 			return next(action);
 		case PICK_SUGGESTION:
@@ -24,11 +27,14 @@ const LocationsMiddleware = ({getState, dispatch}) => next => action => {
 		case REQUEST_LOCATIONS: 
 			const locationsReceived = res => dispatch(receiveLocations(res));
 
+			// assembles the query params from the state
 			const state = getState();
 			let queries = merge({}, state.bounds, state.queries);
 			Object.keys(queries).forEach( k => {
 				if (queries[k] === '' || !queries[k]) delete queries[k];
 			});
+
+			// fetches movie locations
 			fetchLocations(queries, locationsReceived, handleError);
 			return next(action);
 		default:

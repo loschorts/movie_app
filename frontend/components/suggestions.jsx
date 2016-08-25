@@ -1,8 +1,14 @@
 import React from 'react';
 
+
+// A sometimes-visible component that shows Filter suggestions whenever a user
+// has begun typing on a `Form` field. Clicking a suggestion auto-completes the
+// field, triggering a new request for movie locations matching the now-complete
+// field.
+
 class Suggestions extends React.Component {
 	constructor() {
-		super()
+		super();
 		this.handleClick = this.handleClick.bind(this);
 	}
 	handleClick(e){
