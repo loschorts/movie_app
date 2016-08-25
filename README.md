@@ -82,8 +82,8 @@ the future, for example as part of the Index but not the Map.
 
 # Installation
 
-- Open Postgres.
-- `git clone git@github.com:loschorts/movie_app.git
+- Open Postgres
+- `git clone git@github.com:loschorts/movie_app.git`
 - `cd movie_app`
 - `./install.sh`
 - `http://localhost:3000`
