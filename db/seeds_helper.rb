@@ -10,7 +10,7 @@ def fetch_movie_locations(should_run = false)
 	results = JSON.parse(response.body)
 
 	results.each do |result|
-		MovieLocation.create!(result);
+		p MovieLocation.create!(result);
 	end
 end
 

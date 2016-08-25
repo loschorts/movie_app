@@ -1,24 +1,24 @@
-# README
+# Movie Filter Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
 
-Things you may want to cover:
+`./install.sh`
 
-* Ruby version
+## Dependencies 
 
-* System dependencies
+-	`node`
+- `webpack`
+- `ruby`
+- `gem`
+- `postgresql`
 
-* Configuration
+### Gems
 
-* Database creation
+-	`rails`
+- `bundler`
 
-* Database initialization
+## Features
 
-* How to run the test suite
+ a) your motivation for the libraries and tools that you chose,
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Design Choices
