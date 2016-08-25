@@ -22,8 +22,8 @@ class Map extends React.Component {
 		const { setBounds } = this.props;
 
 		const MapOptions = {
-		  center: {lat: 37.791305, lng: -122.3937352},
-		  zoom: 15
+		  center: {lat: 37.78832052835358, lng: -122.43901088817137},
+		  zoom: 12
 		};
 
   	this.map = new google.maps.Map(this._ref, MapOptions);	
@@ -78,6 +78,7 @@ class Map extends React.Component {
   }
 
 	render(){
+		if (this.map) console.log(this.map.getCenter().toJSON());
 		return (
 			<div 
 				ref={ c => {this._ref = c}} 

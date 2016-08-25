@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+#app > * {
+	max-width: 500px;
+}
 #app {
 	display: flex;
 }

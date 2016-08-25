@@ -22,7 +22,7 @@ class MovieLocation < ApplicationRecord
 
 	def self.suggest(field, query)
 
-		self.where(" #{field} like ? ", "%#{query}%")
+		self.where(" #{field} like ? ", "%#{query}%").where(mappable: true)
 			.select(field.to_sym).distinct
 	end
 
