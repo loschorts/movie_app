@@ -9,7 +9,7 @@
 require_relative './seeds_helper.rb'
 
 # hit the provider API for movie location data
-fetch_movie_locations(true)
+fetch_movie_locations(false)
 
 # convert `locations` into coordinates
-fetch_geocodes(true)
+fetch_geocodes(false)
