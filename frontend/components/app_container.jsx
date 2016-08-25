@@ -4,6 +4,8 @@ import { requestLocations, setBounds, setQueryField, setDetail, requestSuggestio
 import { locationsArray } from '../selectors';
 import App from './app';
 
+// This is the interface between the `store`, which holds application state, and the `App` component, which in turn serves as the main interface between its children and the `store`.
+
 const mapState = state => ({
 	locationsArray: locationsArray(state),
 	locations: state.locations,

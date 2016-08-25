@@ -3,6 +3,13 @@ import merge from 'lodash/merge';
 
 import SuggestionsContainer from './suggestions_container';
 
+// This component contains an array of forms that, `onChange`, dispatch
+// `SET_QUERY_FIELD` changes to the application state, which stores all the
+// filters centrally. Filter changes also emit a `REQUEST_SUGGESTIONS` action
+// that triggers a new API request for updated suggestions. If a filter field is
+// active, the `Form` also shows a `Suggestions` component below the active
+// field.
+
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
@@ -44,6 +51,7 @@ class Form extends React.Component {
 	}
 
 	startClear(){
+		// This is a silly workaround for a race condition caused by `onBlur` of a field happening before `onClick` of a search suggestion
 		setTimeout(this.props.clearSuggestions, 500);
 	}
 

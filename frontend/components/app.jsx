@@ -4,6 +4,10 @@ import Form from './form';
 import Detail from './detail';
 import Map from './map';
 
+// This is the main component. `App` is the primary container of the application
+// and responsible for connecting most of its children to the application state.
+// Note `Suggestions` also independently connects to the state in order to avoid
+// unecessary prop-threading.
 
 class App extends React.Component {
 	componentDidMount(){

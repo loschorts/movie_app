@@ -1,5 +1,7 @@
 import React from 'react';
 
+// This component is responsible for showing a movie location's details if the movie is selected `onClick` of its `IndexItem` or map `marker`.
+
 const Detail = ({ detail, locations }) => {
 	let details;
 	if (!detail) {	
