@@ -2,7 +2,7 @@ import React from 'react';
 
 const Detail = ({ detail, locations }) => {
 	if (!detail) {	
-		return <p> click a list item for details </p>;
+		return <p> click a list item or marker for details </p>;
 	}
 	const location = locations[detail];
 	const details = Object.keys(location).map( key => {
