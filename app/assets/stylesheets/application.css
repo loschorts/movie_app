@@ -14,10 +14,11 @@
  *= require_self
  */
 #app > * {
-	max-width: 500px;
+	width: 250px;
 }
 #app {
 	display: flex;
+	align-content:	flex-start;
 }
 
 #map {

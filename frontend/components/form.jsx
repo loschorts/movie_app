@@ -74,6 +74,7 @@ class Form extends React.Component {
 
 		return (
 			<div id="form">
+				<h4>Filter Form with Suggestions</h4>
 				{fields}
 
 			</div>
